@@ -85,13 +85,13 @@ body {
   top: 44px;
   left: -200vw;
   overflow-x: hidden;
-  right: 0;
   bottom: 0;
   padding: 1rem;
   transition: all 0.3s ease-in-out;
 }
 .navbar.active .navbar-links {
   left: 0;
+  right: 0;
   background-color: white;
   transition: all 0.3s ease-in-out;
 }
