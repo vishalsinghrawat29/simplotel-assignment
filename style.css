@@ -76,7 +76,6 @@ body {
 
 .navbar-links {
   flex-basis: 80%;
-  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -89,8 +88,10 @@ body {
   bottom: 0;
   padding: 1rem;
   transition: all 0.3s ease-in-out;
+  display: none;
 }
 .navbar.active .navbar-links {
+  display: flex;
   left: 0;
   background-color: white;
   transition: all 0.3s ease-in-out;
