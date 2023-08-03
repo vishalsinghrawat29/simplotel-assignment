@@ -15,26 +15,25 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <!-- Navbar -->
     <nav class="navbar">
-      <a href="#" class="navbar-link">Home</a>
-      <a href="#" class="navbar-link">Order</a>
-      <a href="#" class="navbar-link">Food</a>
-      <a href="#" class="navbar-link">Restaurant</a>
-      <a href="#" class="navbar-link">Testimonials</a>
-      <a href="#" class="navbar-link">Contact Us</a>
-      <div class="navbar-icon">
+      <div class="navbar-toggler" id="navbarToggler">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="navbar-links">
+        <a href="#" class="navbar-link">Home</a>
+        <a href="#" class="navbar-link">Order</a>
+        <a href="#" class="navbar-link">Food</a>
+        <a href="#" class="navbar-link">Restaurant</a>
+        <a href="#" class="navbar-link">Testimonials</a>
+        <a href="#" class="navbar-link">Contact Us</a>
+      </div>
+      <div class="navbar-icons">
         <span class="material-symbols-outlined call-icon"> call </span>
         <span class="material-symbols-outlined"> shopping_cart </span>
       </div>
     </nav>
-    <div>
-      <button class="navbar-toggler" id="navbarToggler">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-    </div>
 
     <!-- Header -->
     <section class="header">
@@ -71,5 +70,23 @@
       </div>
       <button class="order-button">Order</button>
     </section>
+
+    <script>
+      const navbarToggler = document.getElementById("navbarToggler");
+      const navbar = document.querySelector(".navbar");
+      const navbarLinks = document.querySelectorAll(".navbar-link");
+
+      navbarToggler.addEventListener("click", () => {
+        navbar.classList.toggle("active");
+        navbarToggler.classList.toggle("active-nav");
+      });
+
+      navbarLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+          navbar.classList.remove("active");
+          navbarToggler.classList.toggle("active-nav");
+        });
+      });
+    </script>
   </body>
 </html>

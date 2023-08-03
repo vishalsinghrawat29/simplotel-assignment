@@ -14,16 +14,86 @@ body {
   font-family: "Open Sans", sans-serif;
 }
 
+.navbar-toggler {
+  display: block;
+  cursor: pointer;
+  padding: 0.25rem 0;
+}
+
+.navbar-toggler > span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  margin: 5px;
+  background-color: rgb(9, 9, 9);
+  transition: all 0.3s ease;
+}
+
+.call-icon {
+  border: 2px solid black;
+  border-radius: 100%;
+  padding: 2px;
+  font-size: 16px;
+}
+
 .navbar {
-  position: fixed;
-  background-color: white;
-  width: 100%;
-  z-index: 5;
   display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding: 0 1rem;
+  position: fixed;
+  top: 0;
+  background-color: white;
+  z-index: 5;
+  min-height: 44px;
+}
+
+.navbar-toggler {
+  flex-basis: 10%;
+}
+
+.navbar-toggler.active-nav > span:first-of-type {
+  transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.navbar-toggler.active-nav span:nth-of-type(2) {
+  opacity: 0;
+}
+.navbar-toggler.active-nav span:last-of-type {
+  transform: rotate(45deg) translate(-5px, -6px);
+}
+
+.navbar-icons {
+  flex-basis: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+.navbar-links {
+  flex-basis: 80%;
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 5rem;
-  padding: 0.75rem 0;
+  position: fixed;
+  top: 44px;
+  left: -200vw;
+  overflow-x: hidden;
+  right: 0;
+  bottom: 0;
+  padding: 1rem;
+  transition: all 0.3s ease-in-out;
+}
+.navbar.active .navbar-links {
+  left: 0;
+  background-color: white;
+  transition: all 0.3s ease-in-out;
 }
 
 .navbar-link {
@@ -32,72 +102,67 @@ body {
   color: black;
   font-size: 1.3rem;
   font-weight: 400;
-  letter-spacing: 1px;
-}
-.navbar-icon {
-  position: absolute;
-  right: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
+  letter-spacing: 3px;
 }
 
-.call-icon {
-  border: 2px solid black;
-  border-radius: 100%;
-  padding: 3px;
-}
 .header {
   position: relative;
+  top: 24px;
 }
 
 .header > img {
   display: block;
   width: 100%;
-  height: 95vh;
+  height: 60vh;
   object-fit: cover;
   object-position: 50% 25%;
 }
+
 .header-content {
   position: absolute;
   z-index: 3;
   top: 30%;
-  left: 5rem;
-  width: 630px;
+  left: 10vw;
+  width: calc(100% - 20vw);
+  max-width: 630px;
   background-color: hwb(0 49% 1% / 0.48);
   color: rgba(255, 255, 255, 0.899);
-  padding: 2rem 8rem 2rem 2rem;
+  padding: 1rem;
 }
 .header-content > h1 {
-  font-size: 3.8rem;
+  font-size: 2rem;
   text-transform: uppercase;
   font-weight: 700;
 }
 .header-content > p {
-  font-size: 1.1rem;
+  font-size: 1rem;
   line-height: 1.5;
 }
+
 .product {
   text-align: center;
+  padding: 1rem;
 }
 .product > h1 {
-  font-size: 3rem;
+  font-size: 2.5rem;
   letter-spacing: 0.1em;
   font-weight: 700;
   color: white;
   text-align: center;
-  margin: 2rem 0;
+  margin: 1rem 0;
 }
 
 .product-items {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+  flex-wrap: wrap;
+  gap: 1.5rem;
 }
 
 .product-item {
   flex-basis: 300px;
+  margin: 0.5rem auto;
   padding: 1.5rem;
   background-color: white;
   text-align: center;
@@ -127,10 +192,68 @@ body {
 .order-button {
   border: none;
   background-color: rgba(255, 255, 255, 0.593);
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   font-weight: 700;
   padding: 1rem 4rem;
   text-align: center;
-  margin: 5rem;
+  margin: 1rem auto;
   border-radius: 5rem;
+}
+
+@media (min-width: 768px) {
+  .header > img {
+    height: 98vh;
+  }
+  .header-content {
+    left: 5rem;
+    padding: 2rem 8rem 2rem 2rem;
+  }
+
+  .header-content > h1 {
+    font-size: 3.8rem;
+  }
+  .header-content > p {
+    font-size: 1.1rem;
+  }
+  .product {
+    padding: 0;
+  }
+
+  .product > h1 {
+    font-size: 3rem;
+    margin: 2rem 0;
+  }
+  .product-items {
+    padding: 1rem;
+  }
+
+  .product-item {
+    margin: 0;
+  }
+  .product-item > h3 {
+    font-size: 1.5rem;
+  }
+
+  .order-button {
+    font-size: 1.3rem;
+    margin: 3rem auto;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .navbar-toggler {
+    visibility: hidden;
+  }
+
+  .navbar {
+    justify-content: center;
+  }
+
+  .navbar-links {
+    flex-basis: calc(80% - 2rem);
+    flex-direction: row;
+    position: static;
+    overflow-x: visible;
+    padding: 0;
+  }
 }
